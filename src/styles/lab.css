@@ -1,0 +1,538 @@
+/* ============================================================
+   Laboratory Workspace Styles
+   ============================================================ */
+
+.lab-section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.lab-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+}
+
+/* ── Panel Header ── */
+.lab-panel-header {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(5, 10, 20, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.lab-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.lab-panel-title-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+/* ── Mode Tabs ── */
+.lab-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+
+.lab-tab {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+.lab-tab:hover {
+  color: var(--text-primary);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.lab-tab.active {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  color: white;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+}
+
+/* ── Lab Body ── */
+.lab-body {
+  padding: var(--spacing-2xl);
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* ── Input Panel ── */
+.input-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.input-panel-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ── Result Panel ── */
+.result-panel {
+  background: rgba(5, 10, 20, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  animation: fadeIn 0.4s ease;
+}
+
+.result-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.result-panel-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.success-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--success);
+  letter-spacing: 0.1em;
+}
+
+.success-indicator::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.result-row {
+  margin-bottom: var(--spacing-lg);
+}
+
+.result-row-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.result-row-value {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  word-break: break-all;
+}
+
+.result-copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: var(--text-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.copy-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--accent-blue-light);
+}
+
+.copy-btn.copied {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: var(--success);
+}
+
+/* ── Empty State ── */
+.lab-empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.lab-empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.3;
+}
+
+.lab-empty-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── Visualization Panel ── */
+.viz-section {
+  padding: var(--spacing-2xl) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.viz-panel {
+  background: rgba(5, 10, 20, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.viz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.viz-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.viz-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ── Step Card ── */
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  animation: fadeInUp 0.35s ease;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.step-card.active-step {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), inset 0 0 40px rgba(59, 130, 246, 0.04);
+}
+
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+}
+
+.step-position-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.8rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--text-accent);
+}
+
+.step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.step-cell {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.step-cell-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.step-cell-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.step-cell-value.blue { color: var(--accent-blue-light); text-shadow: 0 0 15px var(--accent-blue-glow); }
+.step-cell-value.violet { color: var(--accent-violet-light); text-shadow: 0 0 15px var(--accent-violet-glow); }
+.step-cell-value.cyan { color: var(--accent-cyan); text-shadow: 0 0 15px var(--accent-cyan-glow); }
+.step-cell-value.green { color: var(--success); text-shadow: 0 0 15px var(--success-glow); }
+.step-cell-value.small { font-size: 1.1rem; }
+
+.step-formula-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: center;
+}
+
+.step-formula-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.step-formula-value {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.viz-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.viz-progress-dots {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.viz-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.viz-dot.active {
+  background: var(--accent-blue-light);
+  border-color: var(--accent-blue-light);
+  box-shadow: 0 0 8px var(--accent-blue-glow);
+}
+
+.viz-dot.visited {
+  background: rgba(59, 130, 246, 0.4);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.viz-counter {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-left: auto;
+}
+
+/* Show all steps */
+.steps-all-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--spacing-md);
+  animation: fadeIn 0.3s ease;
+}
+
+.step-mini-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  transition: border-color var(--transition-base);
+}
+
+.step-mini-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.step-mini-header {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-accent);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.step-mini-chars {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-mono);
+}
+
+.step-mini-formula {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ── Calculation Table ── */
+.table-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.calc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.calc-table th {
+  background: rgba(5, 10, 20, 0.8);
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.calc-table td {
+  padding: 0.65rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.05);
+  color: var(--text-secondary);
+  transition: background var(--transition-fast);
+}
+
+.calc-table tr:last-child td {
+  border-bottom: none;
+}
+
+.calc-table tbody tr:hover td {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.calc-table .col-pos { color: var(--text-muted); }
+.calc-table .col-plain { color: var(--accent-blue-light); font-weight: 600; }
+.calc-table .col-key { color: var(--accent-violet-light); font-weight: 600; }
+.calc-table .col-pval { color: var(--text-secondary); }
+.calc-table .col-kval { color: var(--text-secondary); }
+.calc-table .col-formula { color: var(--text-accent); font-size: 0.78rem; }
+.calc-table .col-cipher { color: var(--accent-cyan); font-weight: 700; font-size: 1rem; }
+
+@media (max-width: 900px) {
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .lab-body {
+    padding: var(--spacing-lg);
+  }
+
+  .lab-panel-header {
+    padding: var(--spacing-lg);
+  }
+
+  .viz-panel {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .lab-body {
+    padding: var(--spacing-md);
+  }
+
+  .step-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
