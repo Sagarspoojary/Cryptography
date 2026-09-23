@@ -2,6 +2,9 @@
 
 **CRYPTOLAB** is an interactive virtual laboratory for demonstrating, visualizing, and analyzing the classical **Autokey Cipher** encryption algorithm. It provides step-by-step visual execution, real-time formula breakdowns, tabular calculation matrices, and automated test verification.
 
+🔗 **Live Application**: [cryptography-orpin-beta.vercel.app](https://cryptography-orpin-beta.vercel.app)  
+⚙️ **Backend REST API**: [cryptography-eil9.onrender.com](https://cryptography-eil9.onrender.com)
+
 ---
 
 ## ✨ Key Features
@@ -21,7 +24,16 @@
 
 ---
 
-## 🚀 How to Run
+## 🌐 Live Deployments
+
+| Component | Platform | URL |
+| :--- | :--- | :--- |
+| **Frontend** | **Vercel** | [https://cryptography-orpin-beta.vercel.app](https://cryptography-orpin-beta.vercel.app) |
+| **Backend API** | **Render** | [https://cryptography-eil9.onrender.com](https://cryptography-eil9.onrender.com) |
+
+---
+
+## 🚀 How to Run Locally
 
 ### 1. Start the Backend (FastAPI)
 
@@ -65,33 +77,6 @@ CRYPTOGRAPHY/
 └── render.yaml               # Render Blueprint config for backend service
 ```
 
----
-
-## 🌐 Deployment Guide
-
-### 🚀 Frontend on Vercel + Backend on Render
-
-#### 1. Deploy Python FastAPI Backend on Render
-- **Automatic Blueprint**:
-  1. Log into [Render.com](https://render.com).
-  2. Click **New +** -> **Blueprint**.
-  3. Select your repository `manoj008-cmd/Cryptography`.
-  4. Render will automatically detect [`render.yaml`](file:///f:/CRYPTOGRAPHY/render.yaml) and configure the backend service!
-- **Manual Web Service**:
-  - **Root Directory**: `backend`
-  - **Environment**: `Python 3`
-  - **Build Command**: `pip install -r requirements.txt`
-  - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-> Deployed Backend API: `https://cryptography-eil9.onrender.com`
-
-#### 2. Deploy React Frontend on Vercel
-1. Log into [Vercel.com](https://vercel.com).
-2. Click **Add New...** -> **Project** and import `manoj008-cmd/Cryptography`.
-3. Set **Root Directory** to `./`.
-4. Click **Deploy**.
-
-> **Offline / Sleeping Backend Fallback**: If the Render backend is sleeping or spinning up, the frontend automatically falls back to instant browser-side JavaScript calculation!
 
 
 
