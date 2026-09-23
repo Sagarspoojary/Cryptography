@@ -60,6 +60,32 @@ CRYPTOGRAPHY/
 │   ├── styles/               # Global styling & layout
 │   └── utils/                # Client-side Autokey Cipher logic
 ├── package.json              # NPM dependencies & scripts
-└── vite.config.js            # Vite configuration with /api proxy
+├── vite.config.js            # Vite configuration with /api proxy
+└── vercel.json               # Vercel deployment & API rewrite config
 ```
+
+---
+
+## 🌐 Deployment Guide
+
+### Option 1: Vercel (Frontend) + Render (Backend) — *Recommended*
+
+#### 1. Deploy Python FastAPI Backend on Render
+1. Go to [Render.com](https://render.com) and create a free account.
+2. Click **New +** -> **Web Service** and connect your GitHub repo `manoj008-cmd/Cryptography`.
+3. Set the service details:
+   - **Root Directory**: `backend`
+   - **Environment**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+4. Deploy the service and copy your public backend URL (e.g. `https://cryptography-api.onrender.com`).
+
+#### 2. Deploy React Frontend on Vercel
+1. Go to [Vercel.com](https://vercel.com) and import `manoj008-cmd/Cryptography`.
+2. Vercel automatically detects Vite settings.
+3. In `vercel.json`, update the `destination` URL to your deployed Render URL.
+4. Click **Deploy**.
+
+> **Note**: If the backend is sleeping or unavailable, the web app automatically falls back to instant client-side JavaScript execution.
+
 
