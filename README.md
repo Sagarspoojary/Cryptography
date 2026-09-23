@@ -83,15 +83,16 @@ CRYPTOGRAPHY/
   - **Build Command**: `pip install -r requirements.txt`
   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 
-> Once deployed, copy your Render API URL (e.g. `https://cryptography-api.onrender.com`).
+> Deployed Backend API: `https://cryptography-eil9.onrender.com`
 
 #### 2. Deploy React Frontend on Vercel
 1. Log into [Vercel.com](https://vercel.com).
 2. Click **Add New...** -> **Project** and import `manoj008-cmd/Cryptography`.
-3. In [`vercel.json`](file:///f:/CRYPTOGRAPHY/vercel.json), replace `https://cryptography-api.onrender.com` with your active Render URL.
+3. Set **Root Directory** to `./`.
 4. Click **Deploy**.
 
 > **Offline / Sleeping Backend Fallback**: If the Render backend is sleeping or spinning up, the frontend automatically falls back to instant browser-side JavaScript calculation!
+
 
 
 
