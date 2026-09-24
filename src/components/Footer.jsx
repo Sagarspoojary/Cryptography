@@ -23,6 +23,16 @@ export default function Footer() {
 
           <div className="footer-bottom">
             <p>Algorithm: Autokey Cipher | Academic Project</p>
+            <p style={{ marginTop: '0.75rem', fontSize: '0.9rem' }}>
+              Developed by{' '}
+              <a href="https://github.com/manoj008-cmd" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: 'bold' }}>
+                Manoj Kumar
+              </a>
+              {' '}and{' '}
+              <a href="https://github.com/Sagarspoojary" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: 'bold' }}>
+                Sagar S
+              </a>
+            </p>
           </div>
         </div>
       </div>

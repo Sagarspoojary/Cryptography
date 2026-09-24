@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import StepVisualization from './StepVisualization';
 import CalculationTable from './CalculationTable';
 import { encrypt, decrypt, sanitizeInput } from '../utils/autokeyCipher';
 
@@ -27,8 +26,12 @@ export default function CipherLab() {
     setCopiedCipher(false);
     setCopiedKey(false);
 
-    try {
-      const endpoint = mode === 'encrypt' ? '/api/encrypt' : '/api/decrypt';
+        try {
+      // Paste your backend link right here inside the quotes:
+      const BACKEND_URL = 'https://l3j132w3-8000.inc1.devtunnels.ms'; 
+      
+      const endpoint = mode === 'encrypt' ? `${BACKEND_URL}/api/encrypt` : `${BACKEND_URL}/api/decrypt`;
+      
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -224,7 +227,6 @@ export default function CipherLab() {
             {/* Visualization Section */}
             {result && (
               <>
-                <StepVisualization steps={result.steps} mode={mode} />
                 <CalculationTable steps={result.steps} mode={mode} />
               </>
             )}

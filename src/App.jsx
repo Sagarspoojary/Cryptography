@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CipherLab from './components/CipherLab';
+import StepByStepSimulator from './components/StepByStepSimulator';
 import AlgorithmExplanation from './components/AlgorithmExplanation';
 import FormulaSection from './components/FormulaSection';
 import TestCases from './components/TestCases';
@@ -14,6 +15,7 @@ import './styles/index.css';
 import './styles/layout.css';
 import './styles/lab.css';
 import './styles/content.css';
+import './styles/simulator.css';
 
 function App() {
   return (
@@ -54,6 +56,7 @@ function App() {
       <Navbar />
       <Hero />
       <CipherLab />
+      <StepByStepSimulator />
       <AlgorithmExplanation />
       <FormulaSection />
       <TestCases />

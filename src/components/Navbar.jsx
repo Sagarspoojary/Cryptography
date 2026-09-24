@@ -20,6 +20,7 @@ export default function Navbar() {
 
         <ul className="navbar-nav">
           <li><a href="#lab">Lab</a></li>
+          <li><a href="#simulator">Simulator</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#test-cases">Test Cases</a></li>
           <li><a href="#about">About</a></li>
@@ -47,6 +48,7 @@ export default function Navbar() {
 
       <div className={`navbar-mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <a href="#lab" onClick={() => setMobileMenuOpen(false)}>Lab</a>
+        <a href="#simulator" onClick={() => setMobileMenuOpen(false)}>Simulator</a>
         <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
         <a href="#test-cases" onClick={() => setMobileMenuOpen(false)}>Test Cases</a>
         <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
