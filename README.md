@@ -1,102 +1,85 @@
 # 🔐 CRYPTOLAB — Autokey Cipher Virtual Laboratory
 
+**🔗 [Live Website Demo](https://cryptography-rosy.vercel.app)** | **🔌 [Live API Documentation](https://cryptography-26om.onrender.com/docs)**
+
 **CRYPTOLAB** is an advanced interactive virtual laboratory for demonstrating, visualizing, and analyzing the classical **Autokey Cipher** encryption algorithm. It is designed heavily for academic presentations and algorithmic deep-dives, providing a full character-by-character visual execution, real-time formula breakdowns, tabular calculation matrices, and automated test verification.
 
 ---
 
-## ✨ Key Features
+## 📖 How to Use the Application (User Guide)
 
-- **Interactive Step-by-Step Simulator (NEW)**: A dedicated simulator workspace that animates the Autokey cipher execution character-by-character. 
-  - **Dynamic Key Stream Visualization**: Watch how the algorithm builds the key stream using either the Plaintext (during encryption) or the Recovered Plaintext (during decryption).
-  - **A-Z Modular Mapping**: Live visual highlights of the $0-25$ alphabetical mapping for the active plaintext, key, and ciphertext values.
-  - **Animated Calculation Cards**: View step-by-step formula execution: $(P_i + K_i) \pmod{26}$.
-  - **Playback Controls**: Play, pause, skip, and alter simulation speeds ranging from 0.5x to 2x.
-- **Laboratory Workspace**: Encrypt & decrypt complete messages instantly.
-- **Live Calculation Table**: Precise breakdown showing positions, ASCII values, and mathematical outputs in an organized matrix.
-- **Automated Verification Suite**: Built-in test suite automatically verifying algorithm correctness on page load.
-- **Viva/Presentation Mode**: "Try Demo" functionality to auto-fill execution alongside an Algorithm Summary listing Time/Space Complexities ($O(n)$) for quick college presentations.
-- **Hybrid Architecture**: Fast client-side JavaScript execution with a Python FastAPI REST backend fallback!
+Whether you are a student, teacher, or cryptography enthusiast, here is how to use the tools provided:
 
----
+1. **The Laboratory Workspace:**
+   - Navigate to the **Lab** tab.
+   - Select either **Encrypt** or **Decrypt**.
+   - Type your secret message (Plaintext/Ciphertext) and a Keyword.
+   - Click **Process** to instantly generate the mathematical Calculation Table, showing exact ASCII conversions and modulo math formulas used to get the result.
 
-## 👨‍💻 Developers
+2. **The Interactive Step-by-Step Simulator:**
+   - Navigate to the **Simulator** tab.
+   - Click the **TRY DEMO** button for an instant presentation-ready example, or enter custom text.
+   - Use the **Playback Controls** (Play, Pause, Next, Speed) to watch the cipher execute exactly one character at a time.
+   - Watch the **Key Stream Visualizer** automatically build the extended key using your plaintext!
 
-Developed and maintained by:
-- **[Manoj Kumar](https://github.com/manoj008-cmd)**
-- **[Sagar S](https://github.com/Sagarspoojary)**
+3. **Algorithm Verification:**
+   - Scroll to the **Test Cases** section to see automated unit tests that prove the math correctly reverses itself (Encryption -> Decryption = Original Text).
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 Codebase Architecture (Developer Guide)
 
-- **Frontend**: React 19, Vite, Pure CSS (Cyberpunk dark mode UI / Glassmorphism)
-- **Backend**: Python 3.10+, FastAPI, Uvicorn, Pydantic
+This project uses a modern **Hybrid Architecture** with a React frontend and a Python backend. However, the frontend is smart enough to run local JS cryptography if the backend goes to sleep!
+
+### 🎨 Frontend (React + Vite)
+All frontend code is located inside the `src/` folder.
+- **`src/App.jsx`**: The main entry point that organizes the page layout.
+- **`src/components/`**: Contains all UI pieces.
+  - `CipherLab.jsx`: The main calculator workspace.
+  - `StepByStepSimulator.jsx`: The container for the interactive animation view.
+  - `CalculationTable.jsx`: Renders the data grid of math formulas.
+- **`src/utils/autokeyCipher.js`**: **This is the brain of the frontend!** It contains the raw JavaScript logic for the Autokey cipher (`encrypt()` and `decrypt()` functions). If you want to change how the math works, edit this file.
+- **`src/styles/`**: Contains all CSS files for the Cyberpunk Glassmorphism theme.
+
+### ⚙️ Backend (Python FastAPI)
+All backend code is located inside the `backend/` folder.
+- **`main.py`**: This sets up the REST API. It defines routes like `/api/encrypt` and `/api/decrypt`. It uses **Pydantic** to validate that incoming data is correct before calculating the cipher.
+- **`requirements.txt`**: Lists the Python packages required (FastAPI, Uvicorn).
 
 ---
 
-## 🚀 How to Run
+## 💻 Local Development Setup
 
-### 1. Start the Backend (FastAPI)
+If you want to run this project on your own computer, you will need two terminal windows.
 
-In your terminal, navigate to the `backend` directory and start the server:
-
+### 1. Start the Backend API
 ```bash
 cd backend
 pip install -r requirements.txt
 python -m uvicorn main:app --reload --port 8000
 ```
-> The API server will start at `http://localhost:8000`. You can view interactive API documentation at `http://localhost:8000/docs`.
+> The local API will run at `http://localhost:8000`.
 
----
-
-### 2. Start the Frontend (React + Vite)
-
-In a new terminal window, navigate to the root directory and start the Vite dev server:
-
+### 2. Start the Frontend UI
 ```bash
+# In a new terminal window at the project root
 npm install
 npm run dev
 ```
-> Open `http://localhost:5173` in your browser to access the lab workspace.
-
-*(Note: The React frontend handles API fetching through the Vite proxy. If you port-forward the frontend to share with a friend, the frontend will automatically tunnel API requests securely to your backend!)*
+> Open `http://localhost:5173` in your browser. (Vite will automatically proxy `/api` requests to your port 8000 backend thanks to the `vite.config.js` file!)
 
 ---
 
-## 📁 Project Structure
+## 🌐 Deployment Configuration
 
-```text
-CRYPTOGRAPHY/
-├── backend/                  # Python FastAPI Backend
-│   ├── main.py               # API routes (/api/encrypt, /api/decrypt, /api/health)
-│   └── requirements.txt      # FastAPI & Uvicorn dependencies
-├── src/                      # React Frontend Source
-│   ├── components/           # UI & Visualization components (Simulator, Lab, etc.)
-│   ├── styles/               # Global styling, layout, and simulator animations
-│   └── utils/                # Core cryptography logic (autokeyCipher.js)
-├── package.json              # NPM dependencies & scripts
-├── vite.config.js            # Vite configuration with /api proxy
-├── vercel.json               # Vercel deployment & API rewrite config
-└── render.yaml               # Render Blueprint config for backend service
-```
+This project is fully configured for continuous integration cloud deployment:
+- **Frontend Hosting (Vercel)**: The `vercel.json` file automatically rewrites `/api` requests so they point directly to the live Render backend link instead of localhost.
+- **Backend Hosting (Render)**: The `render.yaml` file acts as a Blueprint, telling Render exactly how to install Python, install requirements, and start the Uvicorn server automatically.
 
 ---
 
-## 🌐 Deployment Guide
+## 👨‍💻 Developers
 
-### 🚀 Frontend on Vercel + Backend on Render
-
-#### 1. Deploy Python FastAPI Backend on Render
-- **Automatic Blueprint**:
-  1. Log into [Render.com](https://render.com).
-  2. Click **New +** -> **Blueprint**.
-  3. Select your repository `Sagarspoojary/Cryptography` (or `manoj008-cmd/Cryptography`).
-  4. Render will automatically detect `render.yaml` and configure the backend service!
-
-#### 2. Deploy React Frontend on Vercel
-1. Log into [Vercel.com](https://vercel.com).
-2. Click **Add New...** -> **Project** and import the repository.
-3. In `vercel.json`, replace `https://cryptography-api.onrender.com` with your active Render URL (if applicable).
-4. Click **Deploy**.
-
-> **Offline / Sleeping Backend Fallback**: If the Render backend is sleeping or spinning up, the frontend automatically falls back to instant browser-side JavaScript calculation, ensuring the site never breaks for users!
+Developed and maintained as an academic project by:
+- **[Manoj Kumar](https://github.com/manoj008-cmd)**
+- **[Sagar S](https://github.com/Sagarspoojary)**
