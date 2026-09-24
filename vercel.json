@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://cryptography-api.onrender.com/api/:path*"
+      "destination": "https://cryptography-26om.onrender.com/api/:path*"
     }
   ]
 }
