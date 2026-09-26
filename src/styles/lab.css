@@ -19,7 +19,7 @@
 .lab-panel-header {
   padding: var(--spacing-xl) var(--spacing-2xl);
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(5, 10, 20, 0.5);
+  background: rgba(10, 5, 5, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
 }
 
 /* ── Mode Tabs ── */
@@ -77,13 +77,13 @@
 
 .lab-tab:hover {
   color: var(--text-primary);
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 .lab-tab.active {
   background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
   color: white;
-  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
 }
 
 /* ── Lab Body ── */
@@ -113,7 +113,7 @@
 
 /* ── Result Panel ── */
 .result-panel {
-  background: rgba(5, 10, 20, 0.6);
+  background: rgba(10, 5, 5, 0.6);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
@@ -198,8 +198,8 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.25);
   color: var(--text-accent);
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -207,7 +207,7 @@
 }
 
 .copy-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(249, 115, 22, 0.2);
   border-color: var(--accent-blue-light);
 }
 
@@ -243,7 +243,7 @@
 }
 
 .viz-panel {
-  background: rgba(5, 10, 20, 0.5);
+  background: rgba(10, 5, 5, 0.5);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
@@ -284,8 +284,8 @@
 }
 
 .step-card.active-step {
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), inset 0 0 40px rgba(59, 130, 246, 0.04);
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.15), inset 0 0 40px rgba(249, 115, 22, 0.04);
 }
 
 .step-card-header {
@@ -301,8 +301,8 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   padding: 0.3rem 0.8rem;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(74, 222, 128, 0.2));
+  border: 1px solid rgba(249, 115, 22, 0.3);
   border-radius: var(--radius-full);
   color: var(--text-accent);
 }
@@ -345,7 +345,7 @@
 
 .step-formula-box {
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.2);
   border-radius: var(--radius-md);
   padding: var(--spacing-md) var(--spacing-lg);
   text-align: center;
@@ -398,8 +398,8 @@
 }
 
 .viz-dot.visited {
-  background: rgba(59, 130, 246, 0.4);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(249, 115, 22, 0.4);
+  border-color: rgba(249, 115, 22, 0.4);
 }
 
 .viz-counter {
@@ -427,7 +427,7 @@
 }
 
 .step-mini-card:hover {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(249, 115, 22, 0.3);
 }
 
 .step-mini-header {
@@ -471,7 +471,7 @@
 }
 
 .calc-table th {
-  background: rgba(5, 10, 20, 0.8);
+  background: rgba(10, 5, 5, 0.8);
   color: var(--text-muted);
   font-size: 0.65rem;
   font-weight: 600;
@@ -486,7 +486,7 @@
 .calc-table td {
   padding: 0.65rem 1rem;
   text-align: center;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.05);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.05);
   color: var(--text-secondary);
   transition: background var(--transition-fast);
 }
@@ -496,7 +496,7 @@
 }
 
 .calc-table tbody tr:hover td {
-  background: rgba(59, 130, 246, 0.05);
+  background: rgba(249, 115, 22, 0.05);
 }
 
 .calc-table .col-pos { color: var(--text-muted); }

@@ -37,7 +37,7 @@ export default function Correctness() {
               
               <div className="correct-arrow">→</div>
               
-              <div className="correct-node" style={{borderColor: 'rgba(34, 211, 238, 0.4)'}}>
+              <div className="correct-node" style={{borderColor: 'rgba(255, 115, 0, 0.4)'}}>
                 <div className="correct-node-label" style={{color: 'var(--accent-cyan)'}}>Encrypted</div>
                 <div className="correct-node-val" style={{color: 'var(--accent-cyan)'}}>KXRAVD</div>
               </div>

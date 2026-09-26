@@ -90,7 +90,7 @@ export default function StepVisualization({ steps, mode }) {
                   </div>
                 </div>
 
-                <div className="step-cell" style={{gridColumn: '1 / -1', background: 'rgba(34, 211, 238, 0.1)'}}>
+                <div className="step-cell" style={{gridColumn: '1 / -1', background: 'rgba(255, 115, 0, 0.1)'}}>
                   <div className="step-cell-label">Ciphertext</div>
                   <div className="step-cell-value cyan">{currentStep.cipherChar}</div>
                 </div>
@@ -116,7 +116,7 @@ export default function StepVisualization({ steps, mode }) {
                   </div>
                 </div>
 
-                <div className="step-cell" style={{gridColumn: '1 / -1', background: 'rgba(59, 130, 246, 0.1)'}}>
+                <div className="step-cell" style={{gridColumn: '1 / -1', background: 'rgba(249, 115, 22, 0.1)'}}>
                   <div className="step-cell-label">Recovered Plaintext</div>
                   <div className="step-cell-value blue">{currentStep.plaintextChar}</div>
                   <div className="step-cell-label" style={{marginTop: '8px'}}>Extends key: {currentStep.keyStreamSoFar}</div>

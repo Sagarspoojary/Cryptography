@@ -16,8 +16,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(249, 115, 22, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -28,7 +28,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 80% 60% at 50% 10%,
-    rgba(37, 99, 235, 0.08) 0%,
+    rgba(234, 88, 12, 0.08) 0%,
     transparent 70%
   );
 }
@@ -37,7 +37,7 @@
   position: absolute;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: rgba(59, 130, 246, 0.12);
+  color: rgba(249, 115, 22, 0.12);
   user-select: none;
   pointer-events: none;
   animation: binary-fall linear infinite;
@@ -64,7 +64,7 @@
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.6), transparent);
   pointer-events: none;
   animation: particle-float ease-in-out infinite;
 }
@@ -91,7 +91,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(5, 10, 20, 0.85);
+  background: rgba(10, 5, 5, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
@@ -125,7 +125,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
 }
 
 .navbar-logo-text {
@@ -163,7 +163,7 @@
 
 .navbar-nav a:hover {
   color: var(--text-primary);
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(249, 115, 22, 0.08);
 }
 
 .navbar-right {

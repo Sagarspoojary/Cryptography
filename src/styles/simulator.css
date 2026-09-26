@@ -69,7 +69,7 @@
 
 /* Algorithm Summary */
 .algo-summary-panel {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(25, 15, 5, 0.6);
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: 1.5rem;
@@ -124,10 +124,10 @@
 .algo-stat-value {
   color: var(--text-primary);
   font-family: var(--font-mono);
-  background: rgba(34, 211, 238, 0.1);
+  background: rgba(255, 115, 0, 0.1);
   padding: 2px 8px;
   border-radius: 4px;
-  border: 1px solid rgba(34, 211, 238, 0.2);
+  border: 1px solid rgba(255, 115, 0, 0.2);
 }
 
 /* Timeline */
@@ -190,12 +190,12 @@
   background: var(--accent-cyan);
   border-color: var(--accent-cyan);
   color: #000;
-  box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 15px rgba(255, 115, 0, 0.5);
   transform: scale(1.2);
 }
 
 .sim-timeline-node.completed .sim-timeline-dot {
-  background: rgba(34, 211, 238, 0.2);
+  background: rgba(255, 115, 0, 0.2);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
 }
@@ -239,7 +239,7 @@
 }
 
 .calc-card-header {
-  background: rgba(34, 211, 238, 0.1);
+  background: rgba(255, 115, 0, 0.1);
   padding: 1rem;
   font-weight: bold;
   color: var(--accent-cyan);
@@ -290,7 +290,7 @@
 }
 
 .formula-row {
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(74, 222, 128, 0.1);
   padding: 0.5rem;
   border-radius: 6px;
 }
@@ -306,8 +306,8 @@
   align-items: center;
   margin-top: 1rem;
   padding: 1rem;
-  background: rgba(34, 211, 238, 0.15);
-  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(255, 115, 0, 0.15);
+  border: 1px solid rgba(255, 115, 0, 0.3);
   border-radius: 8px;
   opacity: 0;
   animation: scaleIn 0.5s forwards;
@@ -442,19 +442,19 @@
 }
 
 .active-plain {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(249, 115, 22, 0.2);
   border-color: var(--accent-blue);
 }
 .active-plain .alphabet-letter { color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); }
 
 .active-key {
-  background: rgba(139, 92, 246, 0.2);
+  background: rgba(74, 222, 128, 0.2);
   border-color: var(--accent-violet);
 }
 .active-key .alphabet-letter { color: var(--accent-violet); text-shadow: 0 0 5px var(--accent-violet); }
 
 .active-result {
-  background: rgba(34, 211, 238, 0.2);
+  background: rgba(255, 115, 0, 0.2);
   border-color: var(--accent-cyan);
 }
 .active-result .alphabet-letter { color: var(--accent-cyan); text-shadow: 0 0 5px var(--accent-cyan); }
@@ -535,14 +535,14 @@
 }
 
 .keystream-char.active {
-  background: rgba(34, 211, 238, 0.2);
+  background: rgba(255, 115, 0, 0.2);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
   transform: scale(1.1);
 }
 
 .keystream-char.active-key {
-  background: rgba(139, 92, 246, 0.2);
+  background: rgba(74, 222, 128, 0.2);
   border-color: var(--accent-violet);
   color: var(--accent-violet);
   transform: scale(1.1);
@@ -561,7 +561,7 @@
 }
 
 .from-keyword .keystream-source-label { color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); }
-.from-text .keystream-source-label { color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.3); }
+.from-text .keystream-source-label { color: var(--accent-blue); border-color: rgba(249, 115, 22, 0.3); }
 
 .keystream-divider {
   height: 1px;
@@ -626,16 +626,16 @@
 }
 
 .pipeline-node.active {
-  background: rgba(34, 211, 238, 0.1);
-  border-color: rgba(34, 211, 238, 0.3);
+  background: rgba(255, 115, 0, 0.1);
+  border-color: rgba(255, 115, 0, 0.3);
   color: var(--accent-cyan);
 }
 
 .pipeline-node.current {
-  background: rgba(34, 211, 238, 0.2);
+  background: rgba(255, 115, 0, 0.2);
   border-color: var(--accent-cyan);
   color: #fff;
-  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 15px rgba(255, 115, 0, 0.3);
   transform: scale(1.05);
 }
 
@@ -652,8 +652,8 @@
 
 /* Result Card */
 .sim-result-card {
-  background: rgba(34, 211, 238, 0.05);
-  border: 1px solid rgba(34, 211, 238, 0.2);
+  background: rgba(255, 115, 0, 0.05);
+  border: 1px solid rgba(255, 115, 0, 0.2);
   border-radius: 12px;
   padding: 3rem 2rem;
   text-align: center;
@@ -677,7 +677,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 30px rgba(255, 115, 0, 0.4);
 }
 
 .sim-result-header h2 {
