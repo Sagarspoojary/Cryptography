@@ -39,7 +39,7 @@ export default function CipherLab() {
 
     try {
       // Use your deployed FastAPI backend URL.
-      const BACKEND_URL = 'https://l3j132w3-8000.inc1.devtunnels.ms';
+      const BACKEND_URL = 'https://cryptography-26om.onrender.com';
 
       const endpoint =
         mode === 'encrypt'
