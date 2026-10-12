@@ -1,103 +1,196 @@
 /**
  * autokeyCipher.js
- * Core cryptographic implementation for the Autokey Cipher algorithm.
- * All cryptographic logic is centralized here, separate from UI components.
+ * Autokey Cipher with support for spaces, numbers,
+ * punctuation, and other non-English-letter characters.
+ *
+ * Only ASCII English letters participate in the cipher.
+ * Nonletters are preserved and do not consume key-stream letters.
  */
 
 /**
- * Sanitizes input: converts to uppercase, removes non-alpha characters.
+ * Sanitizes keywords and other inputs that must contain only A-Z.
  */
-export function sanitizeInput(text) {
-  return text.toUpperCase().replace(/[^A-Z]/g, '');
+export function sanitizeInput(text = '') {
+  return String(text).toUpperCase().replace(/[^A-Z]/g, '');
+}
+
+/**
+ * Checks whether a character is an English ASCII letter.
+ */
+function isEnglishLetter(char) {
+  return /^[A-Za-z]$/.test(char);
 }
 
 /**
  * Encrypts plaintext using the Autokey Cipher.
- * @param {string} plaintext - The plaintext to encrypt (A-Z only).
- * @param {string} keyword - The keyword to start the key stream.
- * @returns {{ ciphertext: string, keyStream: string, steps: Array }}
  */
 export function encrypt(plaintext, keyword) {
-  const P = sanitizeInput(plaintext);
+  const originalPlaintext = String(plaintext ?? '');
   const K = sanitizeInput(keyword);
 
-  if (!P || !K) {
-    throw new Error('Plaintext and keyword must contain at least one alphabetic character.');
+  const plaintextLetters = [...originalPlaintext]
+    .filter(isEnglishLetter)
+    .map((char) => char.toUpperCase());
+
+  if (plaintextLetters.length === 0) {
+    throw new Error(
+      'Plaintext must contain at least one English letter.'
+    );
   }
 
-  // Build the full key stream: keyword + plaintext (only as many chars as needed)
-  const keyStream = (K + P).substring(0, P.length);
-  let ciphertext = '';
-  const steps = [];
+  if (!K) {
+    throw new Error(
+      'Keyword must contain at least one English letter.'
+    );
+  }
 
-  for (let i = 0; i < P.length; i++) {
-    const pVal = P.charCodeAt(i) - 65;
-    const kVal = keyStream.charCodeAt(i) - 65;
+  let ciphertext = '';
+  let keyStream = '';
+  const steps = [];
+  let letterIndex = 0;
+
+  for (let position = 0; position < originalPlaintext.length; position++) {
+    const originalChar = originalPlaintext[position];
+
+    // Preserve nonletters exactly as entered.
+    if (!isEnglishLetter(originalChar)) {
+      ciphertext += originalChar;
+      continue;
+    }
+
+    const pChar = originalChar.toUpperCase();
+    const pVal = pChar.charCodeAt(0) - 65;
+
+    const kChar =
+      letterIndex < K.length
+        ? K[letterIndex]
+        : plaintextLetters[letterIndex - K.length];
+
+    const kVal = kChar.charCodeAt(0) - 65;
     const cVal = (pVal + kVal) % 26;
-    const cChar = String.fromCharCode(cVal + 65);
+
+    let cChar = String.fromCharCode(cVal + 65);
+
+    // Preserve the case of the original plaintext letter.
+    if (originalChar >= 'a' && originalChar <= 'z') {
+      cChar = cChar.toLowerCase();
+    }
+
     ciphertext += cChar;
+    keyStream += kChar;
 
     steps.push({
-      position: i + 1,
-      plaintextChar: P[i],
-      keyChar: keyStream[i],
+      position: position + 1,
+      letterPosition: letterIndex + 1,
+      plaintextChar: originalChar,
+      keyChar: kChar,
       pVal,
       kVal,
+      cVal,
       formula: `(${pVal} + ${kVal}) mod 26 = ${cVal}`,
       cipherChar: cChar,
       mode: 'encrypt',
     });
+
+    letterIndex++;
   }
 
-  return { ciphertext, keyStream, steps, plaintext: P, keyword: K };
+  return {
+    ciphertext,
+    keyStream,
+    steps,
+    plaintext: originalPlaintext,
+    keyword: K,
+  };
 }
 
 /**
  * Decrypts ciphertext using the Autokey Cipher.
- * @param {string} ciphertext - The ciphertext to decrypt (A-Z only).
- * @param {string} keyword - The keyword used during encryption.
- * @returns {{ plaintext: string, keyStream: string, steps: Array }}
  */
 export function decrypt(ciphertext, keyword) {
-  const C = sanitizeInput(ciphertext);
+  const originalCiphertext = String(ciphertext ?? '');
   const K = sanitizeInput(keyword);
 
-  if (!C || !K) {
-    throw new Error('Ciphertext and keyword must contain at least one alphabetic character.');
+  const ciphertextLetters = [...originalCiphertext]
+    .filter(isEnglishLetter);
+
+  if (ciphertextLetters.length === 0) {
+    throw new Error(
+      'Ciphertext must contain at least one English letter.'
+    );
   }
 
-  let keyStream = K;
-  let plaintext = '';
-  const steps = [];
+  if (!K) {
+    throw new Error(
+      'Keyword must contain at least one English letter.'
+    );
+  }
 
-  for (let i = 0; i < C.length; i++) {
-    const cVal = C.charCodeAt(i) - 65;
-    const kChar = keyStream[i];
+  let plaintext = '';
+  let keyStream = '';
+  const steps = [];
+  const recoveredLetters = [];
+  let letterIndex = 0;
+
+  for (let position = 0; position < originalCiphertext.length; position++) {
+    const originalChar = originalCiphertext[position];
+
+    // Preserve spaces, digits, punctuation, and other symbols.
+    if (!isEnglishLetter(originalChar)) {
+      plaintext += originalChar;
+      continue;
+    }
+
+    const cChar = originalChar.toUpperCase();
+    const cVal = cChar.charCodeAt(0) - 65;
+
+    const kChar =
+      letterIndex < K.length
+        ? K[letterIndex]
+        : recoveredLetters[letterIndex - K.length];
+
     const kVal = kChar.charCodeAt(0) - 65;
-    const pVal = ((cVal - kVal) + 26) % 26;
-    const pChar = String.fromCharCode(pVal + 65);
+    const pVal = (cVal - kVal + 26) % 26;
+
+    let pChar = String.fromCharCode(pVal + 65);
+
+    // Preserve the case of the original ciphertext letter.
+    if (originalChar >= 'a' && originalChar <= 'z') {
+      pChar = pChar.toLowerCase();
+    }
+
     plaintext += pChar;
-    keyStream += pChar; // Extend keystream with recovered plaintext
+    recoveredLetters.push(pChar.toUpperCase());
+    keyStream += kChar;
 
     steps.push({
-      position: i + 1,
-      cipherChar: C[i],
+      position: position + 1,
+      letterPosition: letterIndex + 1,
+      cipherChar: originalChar,
       keyChar: kChar,
       cVal,
       kVal,
+      pVal,
       formula: `(${cVal} - ${kVal} + 26) mod 26 = ${pVal}`,
       plaintextChar: pChar,
       keyStreamSoFar: keyStream,
       mode: 'decrypt',
     });
+
+    letterIndex++;
   }
 
-  return { plaintext, keyStream, steps, ciphertext: C, keyword: K };
+  return {
+    plaintext,
+    keyStream,
+    steps,
+    ciphertext: originalCiphertext,
+    keyword: K,
+  };
 }
 
 /**
  * Generates detailed step-by-step encryption data.
- * Same as encrypt but returns a more UI-friendly structure.
  */
 export function generateEncryptionSteps(plaintext, keyword) {
   return encrypt(plaintext, keyword);
@@ -111,9 +204,7 @@ export function generateDecryptionSteps(ciphertext, keyword) {
 }
 
 /**
- * Runs all built-in test cases.
- * Each test case encrypts, then decrypts, and verifies round-trip correctness.
- * @returns {Array<{ id, plaintext, keyword, expectedCiphertext, actualCiphertext, decryptedPlaintext, passed }>}
+ * Runs built-in round-trip tests.
  */
 export function runTestCases() {
   const testInputs = [
@@ -121,6 +212,8 @@ export function runTestCases() {
     { id: 2, plaintext: 'HELLO', keyword: 'KEY' },
     { id: 3, plaintext: 'CRYPTOGRAPHY', keyword: 'ABC' },
     { id: 4, plaintext: 'INFORMATION', keyword: 'SECRET' },
+    { id: 5, plaintext: 'Hello@123!', keyword: 'KEY' },
+    { id: 6, plaintext: 'Meet me at 5:30 PM!', keyword: 'CODE' },
   ];
 
   return testInputs.map((tc) => {
@@ -128,11 +221,11 @@ export function runTestCases() {
       const encResult = encrypt(tc.plaintext, tc.keyword);
       const decResult = decrypt(encResult.ciphertext, tc.keyword);
 
-      const passed = decResult.plaintext === sanitizeInput(tc.plaintext);
+      const passed = decResult.plaintext === tc.plaintext;
 
       return {
         ...tc,
-        sanitizedPlaintext: sanitizeInput(tc.plaintext),
+        sanitizedPlaintext: tc.plaintext,
         keyStream: encResult.keyStream,
         ciphertext: encResult.ciphertext,
         decryptedPlaintext: decResult.plaintext,
@@ -142,7 +235,7 @@ export function runTestCases() {
     } catch (err) {
       return {
         ...tc,
-        sanitizedPlaintext: sanitizeInput(tc.plaintext),
+        sanitizedPlaintext: tc.plaintext,
         keyStream: '',
         ciphertext: '',
         decryptedPlaintext: '',
@@ -154,7 +247,7 @@ export function runTestCases() {
 }
 
 /**
- * Returns a complete alphabet-to-value mapping for display.
+ * Returns the alphabet-to-value mapping.
  */
 export function getAlphabetMap() {
   return Array.from({ length: 26 }, (_, i) => ({
