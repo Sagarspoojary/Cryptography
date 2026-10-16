@@ -109,6 +109,7 @@ def autokey_encrypt(plaintext: str, keyword: str):
             "keyChar": k_char,
             "pVal": p_val,
             "kVal": k_val,
+            "cVal": c_val,
             "formula": f"({p_val} + {k_val}) mod 26 = {c_val}",
             "cipherChar": c_char,
             "mode": "encrypt"
@@ -164,7 +165,7 @@ def autokey_decrypt(ciphertext: str, keyword: str):
             ]
 
         k_val = ord(k_char) - ord("A")
-        p_val = (c_val - k_val) % 26
+        p_val = (c_val - k_val + 26) % 26
         p_char = chr(p_val + ord("A"))
 
         # Preserve the ciphertext letter's original case.
@@ -181,7 +182,8 @@ def autokey_decrypt(ciphertext: str, keyword: str):
             "keyChar": k_char,
             "cVal": c_val,
             "kVal": k_val,
-            "formula": f"({c_val} - {k_val}) mod 26 = {p_val}",
+            "pVal": p_val,
+            "formula": f"({c_val} - {k_val} + 26) mod 26 = {p_val}",
             "plaintextChar": p_char,
             "keyStreamSoFar": "".join(key_stream),
             "mode": "decrypt"

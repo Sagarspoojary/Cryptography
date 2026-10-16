@@ -13,20 +13,22 @@ export default function CalculationTable({ steps, mode }) {
               <tr>
                 <th>Position</th>
                 <th>Plaintext (P)</th>
-                <th>Key Stream (K)</th>
                 <th>P Value</th>
+                <th>Key Stream (K)</th>
                 <th>K Value</th>
                 <th>Formula</th>
+                <th>C Value</th>
                 <th>Ciphertext (C)</th>
               </tr>
             ) : (
               <tr>
                 <th>Position</th>
                 <th>Ciphertext (C)</th>
-                <th>Key Stream (K)</th>
                 <th>C Value</th>
+                <th>Key Stream (K)</th>
                 <th>K Value</th>
                 <th>Formula</th>
+                <th>P Value</th>
                 <th>Plaintext (P)</th>
               </tr>
             )}
@@ -37,10 +39,11 @@ export default function CalculationTable({ steps, mode }) {
                 <tr key={idx}>
                   <td className="col-pos">{step.position}</td>
                   <td className="col-plain">{step.plaintextChar}</td>
-                  <td className="col-key">{step.keyChar}</td>
                   <td className="col-pval">{step.pVal}</td>
+                  <td className="col-key">{step.keyChar}</td>
                   <td className="col-kval">{step.kVal}</td>
                   <td className="col-formula">{step.formula}</td>
+                  <td className="col-pval">{step.cVal}</td>
                   <td className="col-cipher">{step.cipherChar}</td>
                 </tr>
               ))
@@ -49,10 +52,11 @@ export default function CalculationTable({ steps, mode }) {
                 <tr key={idx}>
                   <td className="col-pos">{step.position}</td>
                   <td className="col-cipher">{step.cipherChar}</td>
-                  <td className="col-key">{step.keyChar}</td>
                   <td className="col-pval">{step.cVal}</td>
+                  <td className="col-key">{step.keyChar}</td>
                   <td className="col-kval">{step.kVal}</td>
                   <td className="col-formula">{step.formula}</td>
+                  <td className="col-pval">{step.pVal}</td>
                   <td className="col-plain">{step.plaintextChar}</td>
                 </tr>
               ))

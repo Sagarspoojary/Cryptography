@@ -208,12 +208,17 @@ export function generateDecryptionSteps(ciphertext, keyword) {
  */
 export function runTestCases() {
   const testInputs = [
-    { id: 1, plaintext: 'ATTACK', keyword: 'KEY' },
-    { id: 2, plaintext: 'HELLO', keyword: 'KEY' },
-    { id: 3, plaintext: 'CRYPTOGRAPHY', keyword: 'ABC' },
-    { id: 4, plaintext: 'INFORMATION', keyword: 'SECRET' },
-    { id: 5, plaintext: 'Hello@123!', keyword: 'KEY' },
-    { id: 6, plaintext: 'Meet me at 5:30 PM!', keyword: 'CODE' },
+    { id: 1, plaintext: 'ATTACK', keyword: 'KEY', expectedCiphertext: 'KXRAVD', description: 'Standard Autokey example (K shorter than P)' },
+    { id: 2, plaintext: 'HELLO', keyword: 'KEY', expectedCiphertext: 'RIJSS', description: 'Keyword shorter than message' },
+    { id: 3, plaintext: 'CRYPTOGRAPHY', keyword: 'ABC', expectedCiphertext: 'CSARKMVKOVYY', description: 'Keyword ABC with repeated letters' },
+    { id: 4, plaintext: 'INFORMATION', keyword: 'SECRET', expectedCiphertext: 'ARHFVFIGNCE', description: 'Keyword shorter than message (SECRET)' },
+    { id: 5, plaintext: 'HELLO', keyword: 'WORLD', expectedCiphertext: 'DSCWR', description: 'Keyword equal in length to plaintext' },
+    { id: 6, plaintext: 'ATTACK', keyword: 'SECRETKEY', expectedCiphertext: 'SXVRGD', description: 'Keyword longer than plaintext' },
+    { id: 7, plaintext: 'A', keyword: 'K', expectedCiphertext: 'K', description: 'Single character plaintext & keyword' },
+    { id: 8, plaintext: 'AAAAAA', keyword: 'A', expectedCiphertext: 'AAAAAA', description: 'Repeated identical characters (A)' },
+    { id: 9, plaintext: 'ZZZZZZ', keyword: 'B', expectedCiphertext: 'AYYYYY', description: 'Boundary modulo wrap-around (Z + B mod 26 = A)' },
+    { id: 10, plaintext: 'Hello@123!', keyword: 'KEY', expectedCiphertext: 'Rijss@123!', description: 'Mixed case and special characters preservation' },
+    { id: 11, plaintext: 'Meet me at 5:30 PM!', keyword: 'CODE', description: 'Punctuation, numbers, and spaces preservation' },
   ];
 
   return testInputs.map((tc) => {

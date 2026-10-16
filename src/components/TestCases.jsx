@@ -57,15 +57,19 @@ export default function TestCases() {
               {results.map(test => (
                 <div key={test.id} className="test-item animate-fade-in">
                   <div className="test-input-group">
-                    <span className="test-label">Input</span>
+                    <span className="test-label">Case #{test.id}</span>
+                    <span className="test-val" style={{fontSize: '0.8rem', color: 'var(--text-accent)'}}>{test.description || 'Test Case'}</span>
+                    <span className="test-label" style={{marginTop: '4px'}}>Input Plaintext</span>
                     <span className="test-val">{test.sanitizedPlaintext}</span>
                     <span className="test-label" style={{marginTop: '4px'}}>Keyword</span>
                     <span className="test-val key">{test.keyword}</span>
                   </div>
                   
                   <div className="test-input-group">
-                    <span className="test-label">Generated Ciphertext</span>
-                    <span className="test-val cipher">{test.ciphertext}</span>
+                    <span className="test-label">Autokey Stream</span>
+                    <span className="test-val key">{test.keyStream}</span>
+                    <span className="test-label" style={{marginTop: '4px'}}>Generated Ciphertext</span>
+                    <span className="test-val cipher">{test.ciphertext} {test.expectedCiphertext && `(Expected: ${test.expectedCiphertext})`}</span>
                     <span className="test-label" style={{marginTop: '4px'}}>Decrypted Plaintext</span>
                     <span className="test-val">{test.decryptedPlaintext}</span>
                   </div>

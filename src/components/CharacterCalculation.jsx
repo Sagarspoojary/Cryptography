@@ -84,7 +84,7 @@ export default function CharacterCalculation({ step, activeStepIndex }) {
             </div>
             <div className="calc-row anim-6">
               <span className="calc-label">Calculation</span>
-              <span className="calc-calculation">({step.cVal} - {step.kVal} + 26) mod 26 = {step.pVal ?? step.cVal}</span>
+              <span className="calc-calculation">({step.cVal} - {step.kVal} + 26) mod 26 = {step.pVal}</span>
             </div>
             
             <div className="calc-result anim-7">
